@@ -1,0 +1,8 @@
+Name: Data Backup Extension
+Author: John Doe
+Version: 0.1
+Module: data_backup.py
+Type: Script
+Functions: 
+    - Description: on_game_stopped
+      FunctionName: on_game_stopped

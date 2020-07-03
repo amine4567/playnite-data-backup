@@ -1,0 +1,17 @@
+{
+    "default_nmax_backups": 5,
+    "default_target_dir": "C:\\path\\to\\target\\dir",
+    "sources": {
+        "Game 1": {
+            "paths": {
+                "saves": "C:\\path\\to\\game1\\saves\\dir"
+            }
+        },
+        "Game 2": {
+            "paths": {
+                "saves": "C:\\path\\to\\game2\\saves\\dir",
+                "config": "C:\\path\\to\\game2\\config\\dir"
+            }
+        }
+    }
+}

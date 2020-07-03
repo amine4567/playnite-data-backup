@@ -1,0 +1,7 @@
+__pycache__
+.mypy_cache
+.vscode
+
+config.json
+
+TODO.txt
