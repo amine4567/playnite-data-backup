@@ -2,6 +2,7 @@ import datetime
 import os
 import json
 import shutil
+import fnmatch
 
 timestamp_format = "%Y-%m-%dT%H_%M_%S"
 
@@ -44,8 +45,27 @@ def backup_game_data(name, settings):
     target_dir_version = os.path.join(target_main_dir, now_str)
 
     data_paths = settings["paths"]
-    for source_label, source_path in data_paths.items():
-        shutil.copytree(source_path, os.path.join(target_dir_version, source_label))
+    for source_label, source_data in data_paths.items():
+        if isinstance(source_data, str):
+            source_path = source_data
+            to_ignore = None
+        elif isinstance(source_data, dict):
+            source_path = source_data["dirpath"]
+            glob_pattern = source_data["glob_pattern"]
+
+            def to_ignore(path, names):
+                return set(
+                    [name for name in names if not fnmatch.fnmatch(name, glob_pattern)]
+                )
+
+        else:
+            raise ValueError("Incorrect paths settings for source: " + source_label)
+
+        shutil.copytree(
+            source_path,
+            os.path.join(target_dir_version, source_label),
+            ignore=to_ignore,
+        )
 
     check_backups(target_main_dir, nmax_backups)
 

@@ -9,7 +9,7 @@
         },
         "Game 2": {
             "paths": {
-                "saves": "C:\\path\\to\\game2\\saves\\dir",
+                "saves": {"dirpath": "C:\\path\\to\\game2\\dir","glob_pattern": "Save*"},
                 "config": "C:\\path\\to\\game2\\config\\dir"
             }
         }
